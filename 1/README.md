@@ -4,6 +4,7 @@
 Write the adjacency list representation and the adjacency matrix for the following tree:
 
 ![Tree 1](imgs/tree1.png)
+### Adjacency List
 ```
 1 -> 2 -> 3
 2 -> 1 -> 4 -> 5
@@ -13,7 +14,7 @@ Write the adjacency list representation and the adjacency matrix for the followi
 6 -> 3
 7 -> 3
 ```
-
+### Adjacency Matrix
 ```
    1 2 3 4 5 6 7
 1 [0 1 1 0 0 0 0]
