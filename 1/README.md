@@ -28,7 +28,12 @@ Write the adjacency list representation and the adjacency matrix for the followi
 ## Problem 2 - BFS and DFS
 Demonstrate how the Breadth-First Search (BFS) and the Depth-First Search (DFS) work, respectively. Use the node “q” as the starting node. During the search, when you have multiple choices regarding which node to visit next please use the alphabetical order to choose the next node.
 ### BFS
-```
-~~This is a test~~
-```
-~~This is a test~~
+q
+~~q~~ s t w
+~~q s~~ t w v
+~~q s t~~ w v x y
+~~q s t w~~ v x y 
+~~q s t w v~~ x y 
+~~q s t w v x~~ y z
+~~q s t w v x y~~ z
+~~q s t w v x y z~~
