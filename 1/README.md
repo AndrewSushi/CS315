@@ -36,7 +36,7 @@ q\
 ~~q s t w v~~ x y\
 ~~q s t w v x~~ y z\
 ~~q s t w v x y~~ z\
-~~q s t w v x y z~~\
+~~q s t w v x y z~~
 
 ### DFS
 q\
@@ -55,3 +55,23 @@ q t y\
 q t ~~y~~\
 q ~~t~~\
 ~~q~~
+r
+r u
+r ~~u~~
+~~r~~
+
+## Problem 3 - Butterfiles
+
+We can use DFS to solve this problem. First, we can create an empty graph with n vertices, where each butterfly represents a vertex. We can then seperate the types of butterflies into two sets A and B, and put the nodes into their corresponding set that differenciates the butterfly. 
+
+## Problem 4 - CS Curriculum
+
+We can use topological sort to find the minimum numbers of semesters needed to complete the curriculum. All edges are directed edges from vertex v to vertex w. This means in terms of courses, v is a pre-requisite for course w. It is also worth noting that w can have multiple pre-requisites which means that we have to complete all the v vertices (pre-requisites) before completing w. We can use the following algorithm to find the minimum number of semesters needed to complete the curriculum:
+```
+1. Do topological sort on the graph, which will result in the linear ordering L of the vertices. 
+2. Create an array S of length n is representing the semesters for each of the courses. They should all be defaulted to 0 since we have not found the semesters yet
+3. Loop 'i' through each node in L (linear ordering of the graph using topological sort). Then, find the maximum of the semesters in array S. This is to make sure that we have completed all of the pre-requisite courses before. And the reason why we take the maximum, is because we need to finish all of the pre-requisites before taking the current course. We then set the corresponding value to the maximum + 1 in array S. This can be represented as S[i] = max(S) + 1. We add one to the previous max since that is the representation of taking that course after the pre-requisites are finished.
+4. After the array S has been completed, the maximum value of the array S will be the minimum number of semesters need to complete the cirriculum. This is because the maximum value represents the most last semester and also corresponds to the end of the curriculum.
+
+This algorithm is O(n + r) where n represents the number of courses needed, and r represents the pre-requisites. Since topological sort is O(n + r) and looping through the total amount of classes is O(n), this algorithm is therefore O(n + r).
+```
