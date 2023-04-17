@@ -54,15 +54,11 @@ q t ~~x~~\
 q t y\
 q t ~~y~~\
 q ~~t~~\
-~~q~~\
-r\
-r u\
-r ~~u~~\
-~~r~~
+~~q~~
 
 ## Problem 3 - Butterfiles
 
-We can use DFS to solve this problem. First, we can create an empty graph with n vertices, where each butterfly represents a vertex. We can then seperate the types of butterflies into two sets A and B, and put the nodes into their corresponding set that differenciates the butterfly. 
+First, we can create an empty graph with n vertices, where each butterfly represents a vertex. We can then seperate the types of butterflies into two sets A and B, and put the nodes into their corresponding set that differenciates the butterfly. For the n butterflies, if there are two butterflies that are the same species, connect them with an edge. This will result in two seperate graphs of A and B. Then, iterate through each of the determinations (Li, Lj), if exists a path from Li to Lj, then those two vertices are the same species. The path can then be reached by using either DFS or BFS. If all determinations are consistent for all conected vertices, then we will return true. If not, this means that there is a contradictions so we return false. This algorithm's time complexity will be O(n + r) since where n is the number of butterflies and r is the number of determinations. Creating the graph is O(n) since there are n vertices/butterflies, and iterating over the determinants is O(n + r) since we are checking if a path exists. Therefore, the algorithm is O(n + r)
 
 ## Problem 4 - CS Curriculum
 
