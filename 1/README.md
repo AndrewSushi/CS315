@@ -54,10 +54,10 @@ q t ~~x~~\
 q t y\
 q t ~~y~~\
 q ~~t~~\
-~~q~~
-r
-r u
-r ~~u~~
+~~q~~\
+r\
+r u\
+r ~~u~~\
 ~~r~~
 
 ## Problem 3 - Butterfiles
