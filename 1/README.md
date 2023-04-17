@@ -36,7 +36,12 @@ q\
 ~~q s t w v~~ x y\
 ~~q s t w v x~~ y z\
 ~~q s t w v x y~~ z\
-~~q s t w v x y z~~
+~~q s t w v x y z~~\
+~~q s t w v x y z~~ r\
+~~q s t w v x y z r~~ u\
+~~q s t w v x y z r u~~\
+Output Sequence:\
+q s t w v x y z r u
 
 ### DFS
 q\
@@ -54,7 +59,15 @@ q t ~~x~~\
 q t y\
 q t ~~y~~\
 q ~~t~~\
-~~q~~
+~~q~~\
+r\
+r u\
+r ~~u~~\
+~~r~~\
+Output Sequence (start time):\
+q s v w t x z y r u\
+Output Sequence (end time):\
+w v s z x y t q u r
 
 ## Problem 3 - Butterfiles
 
