@@ -36,4 +36,22 @@ q\
 ~~q s t w v~~ x y\
 ~~q s t w v x~~ y z\
 ~~q s t w v x y~~ z\
-~~q s t w v x y z~~ \
+~~q s t w v x y z~~\
+
+### DFS
+q\
+q s\
+q s v\
+q s v w\
+q s v ~~w~~\
+q s ~~v~~\
+q ~~s~~\
+q t\
+q t x\
+q t x z\
+q t x ~~z~~\
+q t ~~x~~\
+q t y\
+q t ~~y~~\
+q ~~t~~\
+~~q~~
