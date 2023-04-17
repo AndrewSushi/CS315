@@ -36,4 +36,4 @@ q\
 ~~q s t w v~~ x y\
 ~~q s t w v x~~ y z\
 ~~q s t w v x y~~ z\
-~~q s t w v x y z~~\
+~~q s t w v x y z~~ \
