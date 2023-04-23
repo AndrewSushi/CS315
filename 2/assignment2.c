@@ -14,13 +14,11 @@ int inDegrees[MAX_NODES];
 int dist[MAX_NODES];
 int count[MAX_NODES];
 
-int main(int argc, char *argv[]){
-    // Open the file
-    FILE *file = fopen(argv[1], "r");
-    int vertices, edges;
+int main(){
 
     // Get the verteces and edges
-    fscanf(file, "%d %d", &vertices, &edges);
+    int vertices, edges;
+    scanf("%d %d", &vertices, &edges);
 
     // Initialize the Adjacency List and In Degrees List
     for(int i = 0; i < vertices; i++){
@@ -31,7 +29,7 @@ int main(int argc, char *argv[]){
     // Build the Adjacency List and In Degrees List
     for(int i = 0; i < edges; i++){
         int from, to, weight;
-        fscanf(file, "%d %d %d", &from, &to, &weight);
+        scanf("%d %d %d", &from, &to, &weight);
         Edge *edge = (Edge *)malloc(sizeof(Edge));
         edge->to = to;
         edge->weight = weight;
@@ -40,7 +38,7 @@ int main(int argc, char *argv[]){
         inDegrees[to]++;
     }
 
-    // Perform Topological Sort using Khans Algorithm 
+    // Perform Topological Sort using Khan's Algorithm 
     int queue[MAX_NODES], front = 0, rear = 0;
     for(int i = 1; i <= vertices; i++){
         if(inDegrees[i] == 0){
@@ -72,6 +70,5 @@ int main(int argc, char *argv[]){
     // Printing the Result
     printf("Longest Path: %d\n", dist[vertices]);
     printf("Number of Longest Paths: %d\n", count[vertices]);
-    fclose(file);    
     return 0;
 }
