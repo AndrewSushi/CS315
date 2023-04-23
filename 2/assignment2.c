@@ -68,7 +68,7 @@ int main(){
     }
 
     // Printing the Result
-    printf("Longest Path: %d\n", dist[vertices]);
-    printf("Number of Longest Paths: %d\n", count[vertices]);
+    printf("longest path: %d\n", dist[vertices]);
+    printf("number of longest paths: %d\n", count[vertices]);
     return 0;
 }
