@@ -1,14 +1,16 @@
 all:
-	@gcc -o test test.c
-	@echo "Test 1"
-	@./test inSample1.txt
-	@./test inSample2.txt
-	@./test inLarge1.txt
-	@./test inLarge2.txt
-	@gcc -o test2 test2.c
-	@echo ""
-	@echo "Test 2"
-	@./test2 inSample1.txt
-	@./test2 inSample2.txt
-	@./test2 inLarge1.txt
-	@./test2 inLarge2.txt
+	@printf "OUTPUTS FOR TEST FILES\n"
+	@printf "—————————————————————————————————\n"
+	@gcc -o assignment2 assignment2.c
+	@printf "inSample1.txt:\n"
+	@./assignment2 inSample1.txt
+	@printf "—————————————————————————————————\n"
+	@printf "inSample2.txt:\n"
+	@./assignment2 inSample2.txt
+	@printf "—————————————————————————————————\n"
+	@printf "inLarge1.txt:\n"
+	@./assignment2 inLarge1.txt
+	@printf "—————————————————————————————————\n"
+	@printf "inLarge2.txt:\n"
+	@./assignment2 inLarge2.txt
+	@printf "—————————————————————————————————\n"
