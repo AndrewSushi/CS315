@@ -1,7 +1,10 @@
+// Name: Andrew Chan
+// CS315 - Assignment 2
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_NODES 1000
+#define MAX_NODES 100000
 
 typedef struct Edge{
     int to;
