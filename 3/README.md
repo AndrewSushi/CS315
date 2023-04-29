@@ -30,15 +30,46 @@ Enqueue: K, D, 9
 Enqueue: K, L, 9
 Enqueue: K, J, 3
 Dequeue: K, J, 3 lowest weight
-Create a path between K and J
+Create a path between K to J
 Current cost: 8
-Enqueue: J, F, 10
 Enqueue: J, E, 5
 Enqueue: J, I, 12
 Dequeue: F, B, 4 lowest weight
 Create a path between F to B
 Current cost: 12
-
+Enqueue: B, C, 10
+Dequeue: F, G, 5 lowest weight
+Create a path between F to G
+Current cost: 17
+Enqueue: G, C, 4
+Enqueue: G, H, 8
+Dequeue: G, C, 4 lowest weight
+Create a path between G to C
+Current cost: 21
+Enqueue: C, B, 10
+Enqueue: C, D, 9
+Dequeue: J, E, 5 lowest weight
+Create a path between J to E
+Current cost: 26
+Enqueue: E, I, 9
+Dequeue: G, H, 8 lowest weight
+Create a path between G to H
+Current cost: 34
+Enqueue: H, D, 6
+Enqueue: H, L, 4
+Dequeue: H, L, 4 lowest weight
+Create a path between H to L
+Current cost: 38
+Dequeue: H, D, 6 lowest weight
+Create a path between H to D
+Current cost: 44
+Deqeueue: E, I, 9 lowest weight
+Create a path between E to I
+Current cost: 53
+Final Minimum Spanning Tree:
+A, F, K, J, B, G, C, E, H, L, D, I
+Minimum Spanning Tree Cost:
+53
 ```
 
 (b) Kruskal’s method:  
