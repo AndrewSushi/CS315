@@ -71,5 +71,6 @@ A, F, K, J, B, G, C, E, H, L, D, I
 Minimum Spanning Tree Cost:
 53
 ```
-
+### Prim's Algorithm Tree:
+![Prim's Tree](imgs/prims.png)
 (b) Kruskal’s method:  
