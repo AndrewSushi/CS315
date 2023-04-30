@@ -98,6 +98,9 @@ Minimum Spanning Tree Cost:
 
 ## 2 - Edge Relaxation
 To solve this problem using edge relaxation, we can use a modified version of Dijktra's Algorithm. We can create a minimum capacity array and set them all to infinity except for the first city which we will set to 0. This is because there is no gas needed to travel to that city since we are starting in the city. We will also maintain a priority queue of cities to be visites, which will initially contain only the start node. At each iteration, we remove the node with the minimum gas-tank from the priority queue. For each neighboring city of the dequeued city 'u', calculate the gas capacity required to travel from u to v as the maximum of the gas tank capacity of u and the weight of the edge. It would look like this:
-```minCapacity[v] = max(minCapacity[u] W[u, v])
 ```
-Where minCapacity is the array of gas tank capacity and W is the weights from city u to city v.
+minCapacity[v] = max(minCapacity[u] W[u, v])
+```
+Where minCapacity is the array of gas tank capacity and W is the weights from city u to city v. The reason why we have to take the max is to ensure that the tank is big enough to travel all of the distance. We then update the priority queue with the city v repeating this process until the priority queue is empty. 
+
+## 3 - 
