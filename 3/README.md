@@ -1,4 +1,4 @@
-# Assignment 3
+# Assignment 3 - Andrew Chan
 
 ## 1 - Minimum Spanning Tree
 ![MST](imgs/mst.png)  
