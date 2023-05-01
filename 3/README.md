@@ -108,10 +108,11 @@ To solve this problem using edge relaxation, we can use a modified version of Di
 
 ## 3 - Reliability Path
 ```
-reliability = r(u, v) * r(v, w)
-if reliability > dist[v]:
-    dist[v] = reliability
-    v.prev = u
-    pq.push(dist[v], v)
+relax(u, v, w, pq)
+    reliability = r(u, v) * r(v, w)
+    if reliability > dist[v]:
+        dist[v] = reliability
+        v.prev = u
+        pq.push(dist[v], v)
 ```
-To solve this problem using edge relaxation, we can use the assumption that the reliability path from u to v to x can be represented as r(u, v) * r(v, w). By using this assumption, we can compare that reliability to `dist[v]`, which represents the current estimate of the path from source node s to v, where s is the start. 
+To solve this problem using edge relaxation, we can use the assumption that the reliability path from u to v to x can be represented as r(u, v) * r(v, w). By using this assumption, we can compare that reliability to `dist[v]`, which represents the current estimate of the path from source node s to v, where s is the start. We can also keep track of the previous node u to determine the most reliable path throughout the graph. We can then push `(dist[v], v)` into the priority queue to determine the next order of verticies which is based on the reliability where the least reliable node is dequeued. The process will continue untill all nodes in graph G have been visited, or the priority queue is empty. The priority queue starts with the source node 's' which will be enqueued. Then we can begin queueing nodes with the lowest reliability. For each node that is connected to the dequeued node, we perform the edge relaxation function to obtain the new highest and enqueue it into the priority queue. 
