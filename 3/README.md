@@ -114,4 +114,4 @@ if reliability > dist[v]:
     v.prev = u
     pq.push(dist[v], v)
 ```
-To solve this problem using edge relaxation, we can use the assumption that the reliability path from u to v to x can be represented as r(u, v) * r(v, w). By using this assumption, we can compare that reliability to `dist[v]`
+To solve this problem using edge relaxation, we can use the assumption that the reliability path from u to v to x can be represented as r(u, v) * r(v, w). By using this assumption, we can compare that reliability to dist[v], which represents the current estimate of the path from source node s to v, where s is the start. 
