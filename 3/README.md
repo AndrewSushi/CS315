@@ -98,13 +98,16 @@ Minimum Spanning Tree Cost:
 
 ## 2 - Edge Relaxation
 ```
-relax(u, v, pq)
-    minCapacity[v] = max(minCapacity[u], W[u, v])
-    if minCapacity[v] < minCapacity[u]:
-        minCapacity[u] = minCapacity[v]
-        pq.add(v)
+relax(u, v)
+    if max(u.dist, W[u, v]) < v.dist:
+        v.dist = max(u.dist, W[u, v])
+        v.prev = u
+        if v not in pq:
+            pq.insert((v.dist), v)
+        else:
+            pq.update((v.dist), v)
 ```
-To solve this problem using edge relaxation, we can use a modified version of Dijktra's Algorithm. We can create a minimum capacity array and set them all to infinity except for the first city which we will set to 0. This is because there is no gas needed to travel to that city since we are starting in the city. We will also maintain a priority queue of cities to be visites, which will initially contain only the start node. At each iteration, we remove the node with the minimum gas-tank from the priority queue. For each neighboring city of the dequeued city 'u', calculate the gas capacity required to travel from u to v as the maximum of the gas tank capacity of u and the weight of the edge. Where minCapacity is the array of gas tank capacity and W is the weights from city u to city v. The reason why we have to take the max is to ensure that the tank is big enough to travel all of the distance. We then update the priority queue with the city v repeating this process until the priority queue is empty. 
+To solve this problem using edge relaxation, we can use a modified version of the edge relaxation in Dijktra's Algorithm. We can create a priority queue of cities to be visited, which will initially contain only the start node. At each iteration, we remove the node with the minimum gas-tank from the priority queue. For each neighboring city of the dequeued city 'u', calculate the gas capacity required to travel from u to v as the maximum of the gas tank capacity of u and the weight of the edge from u to v. Where u.dist represents the distance that has the smallest max capacity from the source city and W is the weights from city u to city v. The reason why we have to take the max is to ensure that the tank is big enough to travel all of the distance. We then update the priority queue with the city v repeating this process until the priority queue is empty. If city v is not in the priority queue, enqueue it into the queue, if not, update the priority.
 
 ## 3 - Reliability Path
 ```
@@ -117,4 +120,5 @@ relax(u, v, w, pq)
 ```
 To solve this problem using edge relaxation, we can use the assumption that the reliability path from u to v to x can be represented as r(u, v) * r(v, w). By using this assumption, we can compare that reliability to `dist[v]`, which represents the current estimate of the path from source node s to v, where s is the start. We can also keep track of the previous node u to determine the most reliable path throughout the graph. We can then push `(dist[v], v)` into the priority queue to determine the next order of verticies which is based on the reliability where the least reliable node is dequeued. The process will continue untill all nodes in graph G have been visited, or the priority queue is empty. The priority queue starts with the source node 's' which will be enqueued. Then we can begin queueing nodes with the lowest reliability. For each node that is connected to the dequeued node, we perform the edge relaxation function to obtain a new reliability and enqueue it into the priority queue. 
 
-## 4 - 
+## 4 - Floyd Warshall
+The Floyd-Warshall algorithm determines the shortest path between any two vertices in a graph with weighted edges and direction. It uses a matrix called D^k to record the shortest distance at each iteration k. ^k indicates that the matrix has been computed up to index k. The standard version of the algorithm has a space complexity of O(n^3), but in this case, we need to achieve O(n^2). We can drop the superscripts to compute the distance matrix D. The updated algorithm starts by initializing matrix D with the edge weights of the graph. By updating the values of D^(k-1) with those of D^(k) in-place, we no longer need to create and store all the matrices from the outermost loop, reducing the space complexity to theta(n^2).
