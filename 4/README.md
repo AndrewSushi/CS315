@@ -82,3 +82,16 @@ W6:
 [5   7  ∞  9  0  ∞]
 [3   5  10 7  2  0]
 ```
+
+## 2 - One-stop car
+
+Subproblem: Define the subproblem C[u, v], as the minimum capacity needed to travel from city 'u' to 'v' with one fuel stop.
+
+Recurrence: To calculate C[u, v], consider all possible intermediate cities 'w' where we could stop to get fuel. The capacity would be the maximum of two cases:
+1: The capacity needed to travel from 'u' to 'w', refuel, and then travel from 'w' to 'v'
+2: The capacity needed to travel directly from 'u' to 'v' without refueling
+
+We have:
+C[u, v] = max{ min{ C[u, w], W*[w, v] } | w ∈ V }.
+
+Where W*[w, v] is the length of the shortest route from city w to v.
