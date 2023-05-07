@@ -16,8 +16,9 @@ def floyd(mat):
         for i in range(n):
             for j in range(n):
                 mat[i][j] = min(mat[i][j], mat[i][k] + mat[k][j])
-        print(mat)
+        for row in mat:
+            print(row)
+        print("\n")
     return mat
 
-
-print(floyd(mat))
+floyd(mat)
