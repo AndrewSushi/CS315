@@ -106,3 +106,13 @@ Recurrence:
 `dp[j]` represents the minimum penalty for placing signs up to milepost mj. `(100 - (mi - mj))^2` is the penalty for placing signs at mileposts mi and mj. The constraint mi - mj <= 100 makes sure that the signs are placed within the 100-mile requirement.
 
 By iterating through all previous mileposts `(j = i-1, i-2, ..., 1)` and finding the minimum penalty for placing signs at those mileposts combined with the penalty for placing signs at mi and mj, we can determine the minimum penelty for placing signs up to milepost mi `(dp[i])`. We start with a large value for `dp[i]` (we can sat infinity or largest expressed integer) to ensure that the minimum value is selected in the recurrence relation. Then, we can iterate through the mileposts and update the dp array using the recurrence relation. We then eventually reach the last milepost mn, and the minimum penalty for placing signs along the entire road is stored in `dp[n]`, the last element in the array.
+
+## 4 - Real Estate Location
+Subproblem: We can define `OPT(i, city)` which represents the minimum cost for operation starting at month 1 to `i`, and `city` representing either "Coquille" or "Drain", denoted as `C` or `D`. These are both the two subproblems: `OPT(i, 'C')` and `OPT(i, 'D')`  
+
+Recurrence: 
+```
+OPT(i, 'C') = c_i + min(OPT(i-1, 'C'), OPT(i-1, 'D') + M)
+OPT(i, 'D') = d_i + min(OPT(i-1, 'C') + M, OPT(i-1, 'D'))
+```
+Where the two base cases are `OPT(1, 'C') = c_1` and `OPT(1, 'D') = d_1`, and c_i and d_i represent the cost of operating each city 'C' and 'D' at month `i`. We can initalize two arrays of size n, `opt_c` and `opt_d` which will store the result of both subproblems. We can then set `opt_c[0] = c_1` and `opt_d[0] = d_1` for the base case. After, we can iterate through the months 2 to n, computing both `opt_c[i]` and `opt_d[i]`
