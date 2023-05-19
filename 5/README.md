@@ -19,10 +19,14 @@ M =
 5|  -   -   -   -   0   1500
 6|  -   -   -   -   -   0
 
-M[1,3] = min{M[1,2] + M[3,3] + p0*p2*p3 = 150 + 0 + 180 = 330, M[1,1] + M[2,3] + p0*p1*p3 = 0 + 360 + 600 = 960 } = min{330, 960} = 330
-M[2,4] = min{M[2,3] + M[4,4] + p1*p3*p4 = 360 + 0 + 600 = 960, M[2,2] + M[3,4] + p1*p2*p4 = 0 + 180 + 150 = 330 } = min{960, 330} = 330
-M[3,5] = min{M[3,4] + M[5,5] + p2*p4*p5 = 180 + 0 + 750 = 930, M[3,3] + M[4,5] + p2*p3*p5 = 0 + 3000 + 1800 = 4800 } = min{930, 4800} = 930 
-M[4,6] = min{M[4,5] + M[6,6] + p3*p5*p6 = 3000 + 0 + 3600 = 6600, M[4,4] + M[5,6] + p3*p4*p6 = 0 + 1500 + 360 = 1860 } = min{6600, 1860} = 1860
+M[1,3] = min{M[1,2] + M[3,3] + p0*p2*p3 = 150 + 0 + 180 = 330, 
+M[1,1] + M[2,3] + p0*p1*p3 = 0 + 360 + 600 = 960 } = min{330, 960} = 330
+M[2,4] = min{M[2,3] + M[4,4] + p1*p3*p4 = 360 + 0 + 600 = 960, 
+M[2,2] + M[3,4] + p1*p2*p4 = 0 + 180 + 150 = 330 } = min{960, 330} = 330
+M[3,5] = min{M[3,4] + M[5,5] + p2*p4*p5 = 180 + 0 + 750 = 930, 
+M[3,3] + M[4,5] + p2*p3*p5 = 0 + 3000 + 1800 = 4800 } = min{930, 4800} = 930 
+M[4,6] = min{M[4,5] + M[6,6] + p3*p5*p6 = 3000 + 0 + 3600 = 6600, 
+M[4,4] + M[5,6] + p3*p4*p6 = 0 + 1500 + 360 = 1860 } = min{6600, 1860} = 1860
 
 Too many so etc.
 
@@ -38,3 +42,16 @@ M =
 
 The minimum total number of scalar multiplications with dimensions {5, 10, 3, 12, 5, 50, 6} is 2010
 ```
+
+## 2 - Reliability within Budget
+Subproblem: The subproblem is to find the maximum reliability that can be achieved with budget B consisting the first `i` stages. We can then define the subproblem as R(i, B) where `i` is the current stage, and `B` is the remaining budget.
+
+Base Case:
+The two base cases are:
+R(0, B) = 0 for all B. This signifies that there are no stages, which means the reliability is 0.
+R(i, 0) = 0 for all i. This signifies that there is no budget, which means that the reliability is 0.
+
+Recurrence:
+`R(i, B) = max{R(i - 1, B), R(i - 1, B - k * c[i]) * (1 - (1 - r[i]) ^ k)} for k = 0 to min{B / c[i], m[i]}`
+
+The first part, `R(i - 1, B - k * c[i])`, represents the 
