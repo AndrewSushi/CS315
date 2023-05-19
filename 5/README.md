@@ -44,14 +44,40 @@ The minimum total number of scalar multiplications with dimensions {5, 10, 3, 12
 ```
 
 ## 2 - Reliability within Budget
-Subproblem: The subproblem is to find the maximum reliability that can be achieved with budget B consisting the first `i` stages. We can then define the subproblem as R(i, B) where `i` is the current stage, and `B` is the remaining budget.
+Subproblem:  
+The subproblem is to find the maximum reliability that can be achieved with budget B consisting the first `i` stages. We can then define the subproblem as `R(i, B)` where `i` is the current stage, and `B` is the remaining budget.
 
-Base Case:
+Base Case:  
 The two base cases are:
 R(0, B) = 0 for all B. This signifies that there are no stages, which means the reliability is 0.
 R(i, 0) = 0 for all i. This signifies that there is no budget, which means that the reliability is 0.
 
-Recurrence:
+Recurrence:  
 `R(i, B) = max{R(i - 1, B), R(i - 1, B - k * c[i]) * (1 - (1 - r[i]) ^ k)} for k = 0 to min{B / c[i], m[i]}`
 
-The first part, `R(i - 1, B - k * c[i])`, represents the 
+The first part, `R(i - 1, B - k * c[i])`, represents the maximum reliability for the first `i - 1` stages. This consideres the remaining budget after using k machinges for stage `i`. The second part, `(1 - ( 1 - r[i]) ^ k)`, represents the probability that at least one of the `k` machines for stage `i` works. And `B / c[i]`, represents the maximum number of machines you can buy given the current budget `B`.
+
+## 3 - Destroy Robots
+Subproblem:  
+The subproblem can be defined as finding the maximum number of robots that can be destroyed with EMP at certain points to the `i`th second. Which means that the maximum number of robots we can destroy considering the robot arrivals and the charging function to the `i`th second. We can define the subproblem as `D(i)`, where `i` represents the current second.
+
+Base Case:  
+`D(0) = 0`. This signifies that there are 0 robots that have been destroyed and that have arrived.
+
+Recurrence:  
+`D(i) = max{D(i - 1) + min{x[i], f(i - 1)}, min{x[i], f(i)}}`
+
+`D(i - 1)` represents the max robots destroyed up to the `i - 1`th second. `min{x[i], f(i - 1)}` represents the minimum number of robots arriving at the `i`th second, and the max robots destroyed since `f(i - 1)`. When we add the two values together, we get the value of the EMP at the `i - 1`th second. `min{x[i], f(i)}` represents the minimum between the robots arriving at `i`th second, and the max robots that can be destroyed since `f(i)`. This term is using the EMP at second `i`. Then, take the max of the two and that is the max number of robots ddestroyed at second `i`.
+
+Pseudocode:  
+```
+Function MaxDestroyedRobots(X, f):
+    n = length(X)
+    D = size (n + 1) array of all 0's
+
+    for i = 1 to n:
+        D[i] = max(D[i − 1] + min (X[i], f[i − 1]), min(X[i], f[i]))
+    return D[n]
+```
+
+`X` represents the sequence of robots arrivials, and `f` is the charding function for the EMP. `MaxDestroyedRobots()` implements a bottom up approach to fill array `D`, where `D[i]` represents the max number of robots destroyed at second `i`. The final value is stored in `D[n]` which is the last second.
