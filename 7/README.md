@@ -1,16 +1,16 @@
 # Assignment 7 - Andrew Chan
 ## 1 - Huffman
 ![Huffman](imgs/1.png)  
-Symbol  :   Code
-___     :   10
-e       :   110
-t       :   010
-a       :   001
-i       :   1111
-o       :   000
-n       :   1110
-s       :   0111
-h       :   0110
+Symbol  :   Code  
+___     :   10  
+e       :   110  
+t       :   010  
+a       :   001  
+i       :   1111  
+o       :   000  
+n       :   1110  
+s       :   0111  
+h       :   0110  
 ## 2 - Supercomputer
 
 a. The Algorithm of Processing Jobs with Shortest Duration First
